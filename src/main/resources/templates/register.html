@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="la" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8"  name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" th:href="@{css/register.css}">
+        <title>Register Page</title>
+    </head>
+
+    <!-- <style>
+      * {
+    font-family: "Roboto", sans-serif;
+    font-weight: bolder;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.background-register {
+    background-size: 1600px 1500px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.245), rgba(255, 255, 255, 0.258)),
+        url("https://www.wgu.edu/content/dam/web-sites/blog-newsroom/blog/images/national/2017/dec/hands-on-laptop-keyboard.jpg");
+    /* background-size: cover; */
+    background-position: center;
+    color: black;
+}
+
+/* Full-width input fields */
+input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+/* Set a style for all buttons */
+button {
+    background-color: #70c5c0;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #ce1f13;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn,
+.signupbtn {
+    float: left;
+    width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+    padding: 16px;
+    background-color: #ececec;
+    border-color: #e3e3e3;
+    color: #7a7a7a;
+    border-radius: 5px;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .cancelbtn,
+    .signupbtn {
+        width: 100%;
+    }
+}
+
+.register-form {
+    width: 450px;
+    margin: 0 auto;
+    padding: 55px 0 30px;
+    border-radius: 5px;
+}
+    </style> -->
+
+    <body class = "background-register">
+        <div class="register-form"> 
+  
+  <!-- <form action="action_page.php" style="border-radius: 5px ;border:1px solid #ccc"> -->
+    <form autocomplete="off" action="#" th:action="@{/register}"
+    th:object="${user}" method="POST" role="form" style="border-radius: 5px ;border:1px solid #ccc">
+            <div class="container">
+              <h1>Sign Up</h1>
+              <br>
+              <p>Please fill in this form to create an account.</p>
+              <hr>
+              <br>
+
+              <label th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"><b>User Name</b></label>
+              <input type="text" th:field="*{userName}" placeholder="Enter User Name" name="userName" required>
+
+              <label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"><b>First Name</b></label>
+              <input type="text" th:field="*{firstName}" placeholder="Enter First Name" name="firstName" required>
+
+              <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"><b>Last Name</b></label>
+              <input type="text" th:field="*{lastName}" placeholder="Enter Last Name" name="lastName" required>
+          
+              <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" for="email"><b>Email</b></label>
+              <input type="text" th:field="*{email}" placeholder="Enter Email" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+          
+              <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"><b>Password</b></label>
+              <input type="password" th:field="*{password}" placeholder="Enter Password" name="password" required>
+
+              <label>
+                <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+              </label>
+          
+              <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+          
+              <div class="clearfix">
+                <button type="button" class="cancelbtn">Cancel</button>
+                <button type="submit" class="signupbtn">Sign Up</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+    </body>
+
+</html>
