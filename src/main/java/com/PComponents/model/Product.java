@@ -34,4 +34,11 @@ public class Product {
     @Column(name = "PRODUCT_INFORMATION")
     private String productInformation;
 
+    public boolean getIsInStock() {
+        return isInStock;
+    }
+
+    public void setInStock(boolean inStock) {
+        isInStock = inStock;
+    }
 }

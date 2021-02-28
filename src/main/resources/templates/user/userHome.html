@@ -24,9 +24,34 @@
             <div class="panel-heading">
                 <span th:utext="${userName}"></span>
             </div>
+
+
+
             <div class="panel-body">
-                <img th:src="@{/images/user.jpg}" class="img-responsive center-block" width="400" height="400"
-                     alt="User"/>
+                <table >
+                    <thead >
+                    <tr>
+                        <th>#</th>
+
+                        <th>PRODUCT_ID</th>
+                        <th>PRODUCT_NAME</th>
+                        <th>PRODUCT_PRICE</th>
+                        <th>IS_IN_STOCK</th>
+                        <th>PRODUCT_INFORMATION</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="product: ${productsList}">
+                        <td th:text="${product.idProduct}" />
+                        <td th:text="${product.productName}" />
+                        <td th:text="${product.productPrice}" />
+                        <td th:text="${product.isInStock}" />
+                        <td th:text="${product.productInformation}" />
+                    </tr>
+                    </tbody>
+                </table>
             </div>
             <p class="admin-message-text text-center" th:utext="${userMessage}"></p>
         </div>
