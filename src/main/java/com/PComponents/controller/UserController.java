@@ -38,6 +38,7 @@ public class UserController {
         return view;
     }
 
+
     @PostMapping(value = "/register")
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult, ModelAndView view) {
         User userExists = userService.findUserByEmail(user.getEmail());
@@ -76,7 +77,7 @@ public class UserController {
         view.addObject("userMessage", "This Page is available to Users with User Role");
 
 
-        view.addObject("productsList",productService.findAllProducts());
+        view.addObject("productsList", productService.findAllProducts());
         view.setViewName("user/userHome");
         return view;
     }
