@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="la" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css"  th:href="@{/css/productsV2.css}" />
+        <link rel="stylesheet" type="text/css"  th:href="@{/css/all.min.css}" />
+        <title>Produse</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="logo">
+                <a th:href="@{index}"><img th:src="@{/img/sigla.png}" alt="sigla" /></a>
+            </div>
+            <div class="cont ib relative">
+                <i class="fas fa-user"></i> Cont
+                <ul class="cont-menu list-reset absolute">
+                    <li>
+                        <a th:href="@{login}"> <i class="fas fa-user" style="color: black"></i> Log in </a>
+                    </li>
+                    <li>
+                        <a th:href="@{register}"> <i class="fas fa-user-plus" style="color: black"></i> Sign up </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <nav class="meniu centru">
+            <ul>
+                <li>
+                    <a th:href="@{index}"><i class="fas fa-home"></i>Acasa</a>
+                </li>
+                <li>
+                    <a class="active" href="products.html"><i class="fas fa-store-alt"></i>Produse</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Imagine</th>
+                        <th>Denumire produs</th>
+                        <th>Specificatii</th>
+                        <th>Pret</th>
+                        <th>Stoc</th>
+                    </tr>
+                </thead>
+                <tbody class="products">
+                    <tr th:each="product: ${productsList}">
+
+                        <td><img th:src="${product.photo}"> </td>
+                        <td th:text="${product.productName}" />
+                        <td th:text="${product.productInformation}" />
+                        <td th:text="${product.productPrice}" />
+                        <td th:text="${product.stock}" />
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </body>
+
+    <footer class="centru">Nume1&amp;Nume2&amp;Nume3&amp;Nume4&copy;Scoala Informala de IT - Curs Java Developer - Proiect Final - PComponents</footer>
+</html>

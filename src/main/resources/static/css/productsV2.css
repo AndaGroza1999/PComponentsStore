@@ -1,0 +1,173 @@
+:root {
+    --color-primary-0: #40d89b;
+    --color-primary-1: #c0fce4;
+    --color-primary-2: #73eebd;
+    --color-primary-3: #1ab677;
+    --color-primary-4: #0e7048;
+    --color-secondary-1-0: #5173d8;
+    --color-secondary-1-1: #c6d4fc;
+    --color-secondary-1-2: #819cee;
+    --color-secondary-1-3: #2b4eb5;
+    --color-secondary-1-4: #192e6f;
+}
+
+.titlu,
+h1 {
+    text-align: center;
+    top: auto;
+}
+nav {
+    background: var(--color-primary-1);
+    margin-top: 0;
+    left: 0;
+    right: 0;
+    position: relative;
+    z-index: 10;
+}
+
+body {
+    background-color: rgb(214, 214, 214);
+}
+
+main {
+    padding-bottom: 75px;
+}
+
+footer {
+    font-size: 18px;
+    background: var(--color-primary-1);
+    color: black;
+    /* margin: 0 5px; */
+    padding: 5px;
+    /* position: fixed;
+    bottom: 0;
+    left: -5px;
+    right: -5px;
+    z-index: 10; */
+}
+
+.logo img {
+    top: 10px;
+    width: 165px;
+    position: relative;
+}
+
+.centru {
+    text-align: center;
+}
+
+.meniu {
+    /* position: fixed; */
+    color: var(--color-primary-4);
+    font-family: inknut;
+    font-size: 20px;
+    word-spacing: 30px;
+}
+
+.meniu ul {
+    list-style-type: none;
+    display: inline;
+}
+
+.meniu li {
+    display: inline-block;
+}
+
+.relative {
+    position: relative;
+}
+
+.ib {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.cont {
+    font-size: larger;
+    cursor: pointer;
+    left: 1390px;
+    top: -130px;
+    width: 100px;
+}
+.cont,
+.cont-menu {
+    padding: 5px;
+    text-align: left;
+}
+
+.list-reset {
+    width: 100px;
+    list-style-type: none;
+    margin: 0;
+}
+
+.cont-menu {
+    top: 100%;
+    left: 0;
+    color: black;
+    background-color: peachpuff;
+    padding-left: 5px;
+    display: none;
+}
+
+.list-reset li:hover {
+    background: red;
+}
+
+.cont-menu a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.cont:hover {
+    background-color: palegoldenrod;
+}
+
+.cont:hover .cont-menu {
+    display: block;
+}
+
+nav a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.meniu i {
+    padding: 5px;
+}
+
+.meniu a:hover {
+    cursor: default;
+    color: orange;
+}
+
+.meniu a:active,
+.active {
+    color: var(--color-primary-3);
+}
+
+.products {
+    border: 2.5px solid var(--color-secondary-1-0);
+    border-radius: 5px;
+    background: linear-gradient(to top, rgba(228, 112, 112, 0.86), rgba(156, 162, 228, 0.86));
+    width: 250px;
+    height: 634px;
+    margin: 10px;
+    list-style: none;
+    list-style-position: inside;
+}
+
+.products:hover {
+    background: linear-gradient(to top, rgba(198, 212, 252, 0.8), rgba(81, 115, 216, 0.8));
+}
+
+.products img {
+    display: block;
+    width: 225px;
+    height: 235px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}

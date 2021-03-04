@@ -1,0 +1,6 @@
+2021-03-02 21:17:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ROLE" not found; SQL statement:
+INSERT INTO ONLINESTORE.ROLE VALUES (1,'USER') [42102-197]
+2021-03-02 21:19:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "PRODUCT_INFORMATION VARCHAR(255)": "'PC ATX midi-tower fara sursa, cu panouri transparente din sticla securizata (lateral si frontal), iluminare RGB controlata prin... (280)"; SQL statement:
+INSERT INTO ONLINESTORE.PRODUCT VALUES (1, 'https://s13emagst.akamaized.net/products/29203/29202796/images/res_b9a61f4447a91f255eb4e754032dace6.jpg?width=450&height=450&hash=4F286183B89697BC60657A5CDD539F8C', 'PC ATX midi-tower fara sursa, cu panouri transparente din sticla securizata (lateral si frontal), iluminare RGB controlata prin buton dedicat si telecomanda, include patru ventilatoare 120 mm, suporta cooler CPU cu inaltime maxima 160 mm si placa grafica cu lungime maxima 360 mm.', 'Carcasa AQIRYS Antares, Mid-Tower, fara sursa, ATX, Black', 329.00, 1) [22001-197]

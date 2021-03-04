@@ -1,1 +1,41 @@
-CREATE SCHEMA IF NOT EXISTS STOREDB;
+CREATE SCHEMA IF NOT EXISTS ONLINESTORE;
+USE ONLINESTORE;
+--
+----ROLE
+--INSERT INTO ONLINESTORE.ROLE  VALUES (1,'USER');
+--INSERT INTO ONLINESTORE.ROLE  VALUES (2,'ADMIN');
+--
+----USER
+--INSERT INTO ONLINESTORE.USER  VALUES (1, 'popescu.ion@gmail.com', 'Ion', 'Popescu', '123456', 'JohnTheBest');
+--INSERT INTO ONLINESTORE.USER  VALUES (2, 'mihaiMaftei1985@yahoo.com', 'Mihai', 'Maftei', '123456', 'Mihaitza');
+--INSERT INTO ONLINESTORE.USER  VALUES (3, 'ionelaionelutza@gmail.com', 'Ionela', 'Avram', '123456', 'Ionely');
+--INSERT INTO ONLINESTORE.USER  VALUES (4, 'theDarkSide@gmail.com', 'Catalin', 'Ducman', '123456', 'DarkSide');
+--INSERT INTO ONLINESTORE.USER  VALUES (5, 'skumpika2004@yahoo.com', 'Maria', 'Constantinescu', '123456', 'Mary');
+--INSERT INTO ONLINESTORE.USER  VALUES (6, 'humanityStrongestSolider@yahoo.com', 'Levi', 'Akarman', '123456', 'Shorty');
+--INSERT INTO ONLINESTORE.USER  VALUES (7, 'flaviu@gmail.com', 'Flaviu', 'Ivanciuc', '123456', 'Flaviu');
+--INSERT INTO ONLINESTORE.USER  VALUES (8, 'cristi@gmail.com', 'Cristi', 'Popescu', '123456', 'Cristi');
+--INSERT INTO ONLINESTORE.USER  VALUES (9, 'ionut@gmail.com', 'Ionut', 'Marginean', '123456', 'Ionut');
+--INSERT INTO ONLINESTORE.USER  VALUES (10, 'anda@gmail.com', 'Anda', 'Groza', '123456', 'Anda');
+--
+----USER_ROLE
+--INSERT INTO ONLINESTORE.USER_ROLE  VALUES (7, 2);
+--INSERT INTO ONLINESTORE.USER_ROLE  VALUES (8, 2);
+--INSERT INTO ONLINESTORE.USER_ROLE  VALUES (9, 2);
+--INSERT INTO ONLINESTORE.USER_ROLE  VALUES (10, 2);
+--
+--ALTER TABLE ONLINESTORE.PRODUCT ALTER COLUMN PRODUCT_PHOTO VARCHAR(500);
+--ALTER TABLE ONLINESTORE.PRODUCT ALTER COLUMN PRODUCT_INFORMATION VARCHAR(1000);
+--ALTER TABLE ONLINESTORE.PRODUCT ALTER COLUMN PRODUCT_NAME VARCHAR(500);
+--
+----PRODUCT
+----PRODUCT_ID  	PRODUCT_PHOTO  	PRODUCT_INFORMATION  	PRODUCT_NAME  	PRODUCT_PRICE  	STOCK
+--INSERT INTO ONLINESTORE.PRODUCT  VALUES (1, 'https://s13emagst.akamaized.net/products/29203/29202796/images/res_b9a61f4447a91f255eb4e754032dace6.jpg?width=450&height=450&hash=4F286183B89697BC60657A5CDD539F8C', 'PC ATX midi-tower fara sursa, cu panouri transparente din sticla securizata (lateral si frontal), iluminare RGB controlata prin buton dedicat si telecomanda, include patru ventilatoare 120 mm, suporta cooler CPU cu inaltime maxima 160 mm si placa grafica cu lungime maxima 360 mm.', 'Carcasa AQIRYS Antares, Mid-Tower, fara sursa, ATX, Black', 329.00, 1);
+--INSERT INTO ONLINESTORE.PRODUCT  VALUES (2, 'https://s13emagst.akamaized.net/products/27462/27461488/images/res_cfa66158b2e889f67c1a2dbf971cda0e.jpg?width=450&height=450&hash=1792E51F3F1D2923D3AB1168EC2CD87A', 'Viteza de rotatie 7200 rpm, buffer 256 MB, interfata SATA III, rata de transfer SATA 6 Gb/s, dimensiuni (W x D x H) 101.85 x 146.99 x 26.11 mm, format 3.5".', 'HDD Seagate IronWolf Pro NAS 6TB, 7200rpm, 256MB cache, SATA-III', 1069.93, 1);
+--INSERT INTO ONLINESTORE.PRODUCT  VALUES (3, 'https://3.grgs.ro/images/products/1/5758/1943474/normal/gaming-cr50-curbat-27-inch-4ms-dark-blue-gray-freesync-60hz-5c6acf1e86362b63c154f8fbd22f913c.jpg', 'Tip panel VA, cu diagonala 27 inch, negru-gri, rezolutie 1920 x 1080 pixeli, aspect ratio 16:9, timp de raspuns 4 ms, luminozitate 250 cd/mp, contrast 3000:1 (normal), dimensiuni 614.2 x 466.2 x 251.2 mm, greutate 4.3 kg.', 'Monitor LED Samsung Gaming CR50 Curbat 27 inch 4ms Dark Blue Gray FreeSync 60Hz', 719.99, 0);
+--INSERT INTO ONLINESTORE.PRODUCT  VALUES (4, 'https://5.grgs.ro/images/products/1/1990682/2124754/normal/14-v14-iil-hd-procesor-intel-core-i5-1035g1-6m-cache-up-to-360-ghz-8gb-ddr4-256gb-ssd-gma-uhd-no-os-iron-grey-e2e091efdc1c7ad1c8a51da359494f76.jpg', 'Diagonala de 14 inch, rezolutie 1920 x 1080 pixeli, Full HD, anti-glare, Intel® 2 nuclee, 4 thread-uri, frecventa turbo max 3,5GHz, procesor grafic integrat Radeon, capacitate memorie 8GB DDR4, slot 1 4GB, capacitate SSD 256GB, SSD M.2 PCIe (2242), placa video AMD Radeon, sunet HD Audio, microfon incorporat, sistem Stereo, 3 port-uri USB (1 2.0, 2 3.0), 1 port HDMI, audio Jack 1x Combo, baterie Li-ion, 2 nuclee, dimensiuni (W x D x H) 327.1 x 241 x 19.9 mm, greutate 1.6 kg, camera web, gri.', 'Laptop ultraportabil Laptop Lenovo V14 ADA cu procesor AMD Ryzen 3 3250U pana la 3.50 GHz, 14", Full HD, 8GB, 256GB SSD, AMD Radeon Integrated Graphics, Free DOS, Iron Grey', 2599.99, 0);
+--INSERT INTO ONLINESTORE.PRODUCT  VALUES (5, 'https://2.grgs.ro/images/products/1/1261/1959746/normal/gaming-24g2u-bk-238-inch-1-ms-black-freesync-144hz-bc70e1272db460b89377bb52520cd769.jpg', 'Tip panel IPS, 23.8 inch, anti-glare, negru, rezolutie 1920 x 1080 pixeli, aspect ratio 16:9, timp de raspuns 1 ms, luminozitate 250 cd/mp, boxe integrate 2x 2 W, dimensiuni (W x D x H) 539 x 504 x 227.36 mm, greutate 4.25Kg.', 'Monitor LED AOC Gaming 24G2U/BK 23.8 inch 1 ms Black FreeSync 144Hz', 829.99, 1);
+--INSERT INTO ONLINESTORE.PRODUCT  VALUES (6, 'https://5.grgs.ro/images/products/1/1408706/1415942/normal/hyperx-cloud-stinger-3d77e6fb1451e3983558c6f093e0aec3.jpg', 'Tehnologie wired, sunet stereo, microfon, diametru difuzoare 50mm, impedanta 30Ohm, frecventa raspuns 18 - 23.000Hz, sensibilitate 102dB, lungime cablu 3m, negru, noise-canceling, conectare Jack 3.5mm.', 'Casti Gaming HyperX Cloud Stinger', 214.99, 0);
+--INSERT INTO ONLINESTORE.PRODUCT  VALUES (7, 'https://1.grgs.ro/images/products/1/1630882/1631850/full/aryaman-rgb-mecanica-d66d0e95f5f02ae4a42a0446e4a90a2b.jpg', '', 'Tastatura Gaming Redragon Aryaman RGB Mecanica', 239.99, 1);
+--INSERT INTO ONLINESTORE.PRODUCT  VALUES (8, '', '', '', 329.00, 1);
+--INSERT INTO ONLINESTORE.PRODUCT  VALUES (9, '', '', '', 329.00, 1);
+--INSERT INTO ONLINESTORE.PRODUCT  VALUES (10, '', '', '', 329.00, 1);
