@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -36,5 +37,10 @@ public class UserServiceImpl implements UserService {
         Role userRole = roleRepository.findByRole("USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         return userRepository.save(user);
+    }
+
+    @Override
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
     }
 }

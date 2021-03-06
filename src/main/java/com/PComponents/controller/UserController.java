@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -59,26 +60,29 @@ public class UserController {
         return view;
     }
 
-    @GetMapping(value = "/admin/adminHome")
+    @GetMapping(value = "/admin/UserListAdminHome")
     public ModelAndView adminHome(ModelAndView view) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         view.addObject("userName", "Welcome " + user.getFirstName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         view.addObject("adminMessage", "This Page is available to Users with Admin Role");
-        view.setViewName("admin/adminHome");
+        view.setViewName("admin/UserListAdminHome");
+
+        List<User> list = userService.findAllUsers();
+        view.addObject("listOfUsers", list);
         return view;
     }
 
-    @GetMapping(value = "/user/userHome")
+    @GetMapping(value = "/user/ProductsUserHome")
     public ModelAndView userHome(ModelAndView view) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        view.addObject("userName", "Welcome " + user.getFirstName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+        view.addObject("userName", "Welcome " + user.getUserName() + " (" + user.getEmail() + ")");
         view.addObject("userMessage", "This Page is available to Users with User Role");
 
 
         view.addObject("productsList", productService.findAllProducts());
-        view.setViewName("user/userHome");
+        view.setViewName("user/ProductsUserHome");
         return view;
     }
 }
