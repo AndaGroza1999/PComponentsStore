@@ -24,10 +24,15 @@ public class UserController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping(value = {"/", "/login"})
+    @GetMapping(value = {"/", "**/index"})
+    public ModelAndView index(ModelAndView view) {
+        view.setViewName("index");
+        return view;
+    }
+
+    @GetMapping(value = {"/login"})
     public ModelAndView login(ModelAndView view) {
         view.setViewName("login");
-
         return view;
     }
 

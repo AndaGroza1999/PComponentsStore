@@ -10,32 +10,31 @@
     <link th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}"
           rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel="icon" type="image/x-icon" th:href="@{/img/laptop.png}"/>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/full-computer.png}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
 </head>
 
 <body id="page-top">
-
+<!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: black;" id="mainNav">
     <div class="container">
         <a class="navbar-brand js-scroll-trigger" th:href="@{index}">PComponents</a>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{index}">Acasa</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{ProductsUserHome}">Produse</a>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{index}">Acasă</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger"
+                                        th:href="@{/user/ProductsUserHome}">Produse</a>
                 </li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{login}">Log In</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{register}">Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{/admin/UserListAdminHome}">Listă Useri</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
 <div>
-
-    <div class="panel-heading">
-        <span th:utext="${userName}"></span>
-    </div>
+    <h4 class="admin">
+        <span th:utext="${userName}"></span>!
+    </h4>
 
     <table class="table table-striped">
         <thead class="thead-light">
@@ -49,13 +48,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="User: ${listOfUsers}">
-            <td th:text="${User.id}"/>
-            <td th:text="${User.userName}"/>
-            <td th:text="${User.firstName}"/>
-            <td th:text="${User.lastName}"/>
-            <td th:text="${User.email}"/>
-            <td th:text="${User.roles}"/>
+        <tr th:each="user: ${listOfUsers}">
+            <td th:text="${user.id}"/>
+            <td th:text="${user.userName}"/>
+            <td th:text="${user.firstName}"/>
+            <td th:text="${user.lastName}"/>
+            <td th:text="${user.email}"/>
+            <td th:switch="${#lists.size(user.roles)}">
+                <span th:case="'1'">USER</span>
+                <span th:case="'2'">ADMIN</span>
+            </td>
+<!--            <td th:text="${User.roles}"/>-->
         </tr>
         </tbody>
     </table>
@@ -66,10 +69,12 @@
         </button>
     </form>
 </div>
+
 <footer class="footer bg-black small text-center text-white-50">
     <div class="container">Nume1&amp;Nume2&amp;Nume3&amp;Nume4&copy;Scoala Informala de IT - Curs Java Developer -
         Proiect Final - PComponents
     </div>
 </footer>
+
 </body>
 </html>

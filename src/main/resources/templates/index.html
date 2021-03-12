@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">>
+<html lang="ro" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>Produse</title>
+    <title>Acasă</title>
     <!-- Font Awesome icons (free version)-->
     <script th:src="@{https://use.fontawesome.com/releases/v5.15.1/js/all.js}" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -26,50 +25,30 @@
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{/index}">Acasă</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger"
                                         th:href="@{/user/ProductsUserHome}">Produse</a>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{/admin/UserListAdminHome}">Listă Useri</a></li>
                 </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{/admin/UserListAdminHome}">Listă Useri</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{/login}">Log In</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{/register}">Sign Up</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<main>
-
-    <h4><span th:utext="${userName}"></span>!</h4>
-    <div>
-        <table class="products table table-bordered table-striped">
-            <thead class="thead-light">
-            <tr>
-                <th>Imagine</th>
-                <th>Denumire produs</th>
-                <th>Specificatii</th>
-                <th>Pret</th>
-                <th>Stoc</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="product: ${productsList}">
-                <td><img th:src="${product.photo}"/></td>
-                <td th:text="${product.productName}"/>
-                <td th:text="${product.productInformation}"/>
-                <td th:text="${product.productPrice}"/>
-                <td th:text="${product.stock} ? 'În stoc' : 'Stoc epuizat'"/>
-            </tr>
-            </tbody>
-        </table>
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+        <div class="mx-auto text-center">
+            <h1 class="mx-auto my-0 text-uppercase">Bine ați venit pe PComponents!</h1>
+            <h2 class="text-white-50 mx-auto mt-2 mb-5">Un magazin online care se ocupă cu vânzarea de echipamente și
+                componente IT.</h2>
+        </div>
     </div>
-    <form th:action="@{/logout}" method="get">
-        <button class="btn btn-danger btn-block" name="registration"
-                type="Submit">Logout
-        </button>
-    </form>
-</main>
+</header>
 
-<footer class="footer bg-black small text-center text-white-50">
+<footer class="bg-black small text-center text-white-50 indexpag">
     <div class="container">Nume1&amp;Nume2&amp;Nume3&amp;Nume4&copy;Scoala Informala de IT - Curs Java Developer -
         Proiect Final - PComponents
     </div>
 </footer>
-
 </body>
 </html>
