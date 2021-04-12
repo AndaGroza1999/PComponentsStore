@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ro" xmlns:th="http://www.thymeleaf.org">
+<html lang="ro" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>Acasă</title>
     <!-- Font Awesome icons (free version)-->
     <script th:src="@{https://use.fontawesome.com/releases/v5.15.1/js/all.js}" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -13,6 +13,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="icon" type="image/x-icon" th:href="@{/img/full-computer.png}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+    <title>Acasă</title>
 </head>
 
 <body id="page-top">
@@ -22,13 +23,30 @@
         <a class="navbar-brand js-scroll-trigger" th:href="@{/index}">PComponents</a>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{/index}">Acasă</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger"
-                                        th:href="@{/user/ProductsUserHome}">Produse</a>
+                                        th:href="@{/}">Acasă</a></li>
+                <li sec:authorize="hasAuthority('ADMIN')" class="nav-item"><a class="nav-link js-scroll-trigger"
+                                                                              th:href="@{/admin/UserListAdminHome}">Listă
+                    Useri</a></li>
+                <li sec:authorize="hasAuthority('ADMIN')" class="nav-item"><a class="nav-link js-scroll-trigger"
+                                                                              th:href="@{/newProduct}">Adaugă produs
+                    nou</a></li>
+                <li sec:authorize="hasAnyAuthority('ADMIN', 'USER')" class="nav-item"><a
+                        class="nav-link js-scroll-trigger" th:href="@{/user/ProductsUserHome}">Produse</a></li>
+                <li sec:authorize="hasAnyAuthority('ADMIN', 'USER')" class="nav-item"><a
+                        class="nav-link js-scroll-trigger" th:href="@{/profil}">Profil</a></li>
+
+                <li sec:authorize="isAnonymous()" class="nav-item"><a class="nav-link js-scroll-trigger"
+                                                                      th:href="@{/login}">Conectează-te</a></li>
+                <li sec:authorize="isAnonymous()" class="nav-item"><a class="nav-link js-scroll-trigger"
+                                                                      th:href="@{/register}">Crează-ți cont</a></li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <form th:action="@{/logout}" method="get">
+                        <button class="btn-logout btn-danger btn-block" name="registration"
+                                type="Submit" style="margin-top: 4px;">Deconectare
+                        </button>
+                    </form>
                 </li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{/admin/UserListAdminHome}">Listă Useri</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{/login}">Log In</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{/register}">Sign Up</a></li>
             </ul>
         </div>
     </div>
@@ -46,9 +64,10 @@
 </header>
 
 <footer class="bg-black small text-center text-white-50 indexpag">
-    <div class="container">Nume1&amp;Nume2&amp;Nume3&amp;Nume4&copy;Scoala Informala de IT - Curs Java Developer -
-        Proiect Final - PComponents
+    <div class="container">Anda Groza &amp; Flaviu Ivanciuc &amp; Cristi Popescu &amp; Ionuț Mărginean &copy; Școala
+        Informală de IT - Curs Java Developer - Proiect Final - PComponents
     </div>
 </footer>
+
 </body>
 </html>

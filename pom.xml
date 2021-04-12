@@ -10,10 +10,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.myjavablog</groupId>
-    <artifactId>spring-boot-database-security</artifactId>
+    <groupId>com.PComponents</groupId>
+    <artifactId>PComponentsStoreEShop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-database-security</name>
+    <name>PComponentsStoreEShop</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -92,14 +92,4 @@
         </dependency>
 
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>

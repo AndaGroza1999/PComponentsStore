@@ -20,6 +20,7 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 
     RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
+
     @Override
     protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         String targetURL = determineTargetURL(authentication);
@@ -41,9 +42,9 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 
         // Check user role and decide the redirect URL
         if (roles.contains("ADMIN")) {
-            url = "/admin/UserListAdminHome";
+            url = "/admin/index";
         } else if (roles.contains("USER")) {
-            url = "/user/ProductsUserHome";
+            url = "/user/index";
         }
         return url;
     }

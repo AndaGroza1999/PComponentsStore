@@ -1,16 +1,18 @@
 package com.PComponents.controller;
 
 import com.PComponents.model.User;
+import com.PComponents.repository.RoleRepository;
 import com.PComponents.service.ProductService;
 import com.PComponents.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -24,70 +26,101 @@ public class UserController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
+
     @GetMapping(value = {"/", "**/index"})
-    public ModelAndView index(ModelAndView view) {
-        view.setViewName("index");
-        return view;
+    public String index(Model model) {
+        model.addAttribute("index");
+        return "index";
     }
 
     @GetMapping(value = {"/login"})
-    public ModelAndView login(ModelAndView view) {
-        view.setViewName("login");
-        return view;
+    public String login(Model model) {
+        model.addAttribute("login");
+        return "login";
     }
-
 
     @GetMapping(value = "/register")
-    public ModelAndView registration(ModelAndView view, User user) {
-        view.addObject("user", user);
-        view.setViewName("register");
-        return view;
+    public String registration(Model model, User user) {
+        model.addAttribute("user", user);
+        return "register";
     }
 
-
     @PostMapping(value = "/register")
-    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult, ModelAndView view) {
+    public String createNewUser(@Valid User user, BindingResult bindingResult, Model model) {
         User userExists = userService.findUserByEmail(user.getEmail());
         if (userExists != null) {
             bindingResult
                     .rejectValue("email", "error.user",
-                            "There is already a user registered with the email provided");
+                            "Există deja un cont care are asociat asteastă adresă de e-mail!");
         }
         if (bindingResult.hasErrors()) {
-            view.setViewName("register");
+            model.addAttribute("register");
         } else {
             userService.saveUser(user);
-            view.addObject("successMessage", "User has been registered successfully");
-            view.addObject("user", new User());
-            view.setViewName("register");
-
+            model.addAttribute("successMessage", "Contul a fost creat cu succes!");
+            model.addAttribute("user", new User());
         }
-        return view;
+        return "register";
     }
 
     @GetMapping(value = "/admin/UserListAdminHome")
-    public ModelAndView adminHome(ModelAndView view) {
+    public String adminHome(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        view.addObject("userName", "Welcome " + user.getFirstName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-        view.addObject("adminMessage", "This Page is available to Users with Admin Role");
-        view.setViewName("admin/UserListAdminHome");
-
+        model.addAttribute("userName", "Bine ai venit, " + user.getUserName() + "!");
+        model.addAttribute("adminMessage", "Aceasta pagină este accesibilă numai user-ilor cu rol de Admin.");
         List<User> list = userService.findAllUsers();
-        view.addObject("listOfUsers", list);
-        return view;
+        model.addAttribute("listOfUsers", list);
+        return "admin/UserListAdminHome";
+    }
+
+    @GetMapping(value = "/deleteUser/{id}")
+    public String deleteUser(@PathVariable("id") int id) throws Exception {
+        userService.deleteUserById(id);
+        return "redirect:/admin/UserListAdminHome";
     }
 
     @GetMapping(value = "/user/ProductsUserHome")
-    public ModelAndView userHome(ModelAndView view) {
+    public String userHome(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        view.addObject("userName", "Welcome " + user.getUserName() + " (" + user.getEmail() + ")");
-        view.addObject("userMessage", "This Page is available to Users with User Role");
+        model.addAttribute("userName", "Bine ai venit, " + user.getUserName() + "!");
+        model.addAttribute("userMessage", "Aceasta pagină este accesibilă numai user-ilor cu rol de User.");
+        model.addAttribute("productsList", productService.findAllProducts());
+        return "user/ProductsUserHome";
+    }
 
+    @GetMapping("/profil")
+    public String showUpdateForm(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+//                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + user1));
+        model.addAttribute("user", user);
+        return "profil";
+    }
 
-        view.addObject("productsList", productService.findAllProducts());
-        view.setViewName("user/ProductsUserHome");
-        return view;
+    @PostMapping("/update/{id}")
+    public String updateUser(@PathVariable("id") int id, @Valid User user, BindingResult result) {
+        if (result.hasErrors()) {
+            user.setId(id);
+            return "profil";
+        }
+        userService.saveUser(user);
+        return "index";
+    }
+
+    @GetMapping("/makeAdmin/{id}")
+    public String makeAdmin(@PathVariable("id") int id, @Valid User user, BindingResult result) {
+        userService.makeAdmin(user);
+        return "redirect:/admin/UserListAdminHome";
+    }
+
+    @GetMapping("/makeUser/{id}")
+    public String makeUser(@PathVariable("id") int id, @Valid User user, BindingResult result) {
+        userService.makeUser(user);
+        return "redirect:/admin/UserListAdminHome";
     }
 }
